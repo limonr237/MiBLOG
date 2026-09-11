@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi Experiencia</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            color: #2b2118;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #064E3B,
+                #14532D,
+                #991B1B,
+                #7F1D1D
+            );
+
+            background-size: 300% 300%;
+            animation: fondo 12s ease infinite;
+
+            overflow-x: hidden;
+        }
+
+        @keyframes fondo {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+
+        /* =========================
+           ENCABEZADO
+        ========================= */
+
+        header {
+
+            padding: 22px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(0, 0, 0, 0.28);
+
+            backdrop-filter: blur(8px);
+
+            color: white;
+        }
+
+        header h1 {
+
+            font-family: Arial, sans-serif;
+
+            font-size: 28px;
+
+            letter-spacing: 1px;
+        }
+
+        nav a {
+
+            color: white;
+
+            text-decoration: none;
+
+            margin-left: 25px;
+
+            font-family: Arial, sans-serif;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+
+            color: #fecaca;
+
+        }
+
+
+        /* =========================
+           INTRODUCCIÓN
+        ========================= */
+
+        .introduccion {
+
+            text-align: center;
+
+            color: white;
+
+            padding: 55px 20px 35px;
+        }
+
+        .introduccion h2 {
+
+            font-size: 52px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 12px;
+        }
+
+        .introduccion p {
+
+            font-size: 18px;
+
+            opacity: 0.9;
+
+            font-style: italic;
+        }
+
+
+        /* =========================
+           LIBRO
+        ========================= */
+
+        .libro {
+
+            width: 90%;
+
+            max-width: 960px;
+
+            height: 670px;
+
+            margin: 20px auto 50px;
+
+            position: relative;
+
+            perspective: 1800px;
+        }
+
+
+        /* Página */
+
+        .pagina {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.45),
+                    rgba(255,255,255,0.45)
+                ),
+                repeating-linear-gradient(
+                    transparent,
+                    transparent 31px,
+                    rgba(120,90,50,0.12) 32px
+                );
+
+            background-color: #f3e6c8;
+
+            border-radius: 5px 14px 14px 5px;
+
+            padding: 55px 75px;
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.4),
+                inset 8px 0 15px rgba(80,50,20,0.08);
+
+            transform-origin: left center;
+
+            transition:
+                transform 0.8s ease,
+                opacity 0.4s ease;
+
+            backface-visibility: hidden;
+
+            overflow-y: auto;
+        }
+
+
+        /* Página activa */
+
+        .pagina.activa {
+
+            z-index: 5;
+
+            transform: rotateY(0deg);
+
+            opacity: 1;
+        }
+
+
+        /* Página que ya pasó */
+
+        .pagina.pasada {
+
+            transform: rotateY(-180deg);
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+
+        /* Página futura */
+
+        .pagina.futura {
+
+            z-index: 1;
+
+            transform: rotateY(0deg);
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           PORTADA
+        ========================= */
+
+        .portada {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #3f2817,
+                    #704a2a
+                );
+
+            color: #f8edcf;
+
+            box-shadow:
+                0 25px 50px rgba(0,0,0,0.45);
+        }
+
+        .portada::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 18px;
+
+            border: 2px solid rgba(248,237,207,0.45);
+
+            pointer-events: none;
+        }
+
+        .portada .pequeno {
+
+            font-size: 16px;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 30px;
+        }
+
+        .portada h3 {
+
+            font-size: 60px;
+
+            margin-bottom: 20px;
+        }
+
+        .portada .frase {
+
+            font-size: 20px;
+
+            font-style: italic;
+
+            max-width: 600px;
+
+            line-height: 1.6;
+        }
+
+        .portada .fecha {
+
+            margin-top: 45px;
+
+            font-size: 14px;
+
+            opacity: 0.7;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================
+           CONTENIDO
+        ========================= */
+
+        .pagina .capitulo {
+
+            font-family: Arial, sans-serif;
+
+            font-size: 13px;
+
+            letter-spacing: 3px;
+
+            color: #8b1e1e;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .pagina h3 {
+
+            font-size: 38px;
+
+            margin-bottom: 22px;
+
+            color: #302015;
+        }
+
+        .pagina .linea {
+
+            width: 70px;
+
+            height: 3px;
+
+            background: #8b1e1e;
+
+            margin-bottom: 28px;
+        }
+
+        .pagina p {
+
+            font-size: 19px;
+
+            line-height: 1.9;
+
+            margin-bottom: 18px;
+
+            text-align: justify;
+        }
+
+        .pagina .firma {
+
+            margin-top: 35px;
+
+            text-align: right;
+
+            font-style: italic;
+
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           NÚMERO DE PÁGINA
+        ========================= */
+
+        .numero {
+
+            position: absolute;
+
+            bottom: 22px;
+
+            right: 35px;
+
+            font-size: 14px;
+
+            color: #806b52;
+        }
+
+
+        /* =========================
+           BOTONES
+        ========================= */
+
+        .controles {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 25px;
+
+            margin-bottom: 60px;
+        }
+
+        .boton {
+
+            border: none;
+
+            padding: 13px 28px;
+
+            border-radius: 30px;
+
+            background: rgba(0,0,0,0.45);
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+
+            background: rgba(0,0,0,0.7);
+
+            transform: translateY(-3px);
+        }
+
+        .boton:disabled {
+
+            opacity: 0.35;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+        #contador {
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+
+            min-width: 100px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            background: rgba(0,0,0,0.3);
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav a {
+
+                margin: 0 8px;
+
+                font-size: 14px;
+            }
+
+            .introduccion h2 {
+
+                font-size: 38px;
+            }
+
+            .libro {
+
+                width: 94%;
+
+                height: 620px;
+            }
+
+            .pagina {
+
+                padding: 40px 35px;
+            }
+
+            .pagina h3 {
+
+                font-size: 30px;
+            }
+
+            .pagina p {
+
+                font-size: 17px;
+
+                line-height: 1.7;
+            }
+
+            .portada h3 {
+
+                font-size: 42px;
+            }
+
+            .controles {
+
+                gap: 10px;
+            }
+
+            .boton {
+
+                padding: 11px 18px;
+
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         ENCABEZADO
+    ========================= -->
+
+    <header>
+
+        <h1>Mi Blog</h1>
+
+        <nav>
+
+            <a href="index.html">Inicio</a>
+
+            <a href="sobre-mi.html">Sobre mí</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         TÍTULO
+    ========================= -->
+
+    <section class="introduccion">
+
+        <h2>MI EXPERIENCIA</h2>
+
+        <p>
+            Algunas páginas de la historia que todavía estoy escribiendo.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         LIBRO
+    ========================= -->
+
+    <main class="libro">
+
+
+        <!-- PORTADA -->
+
+        <section class="pagina activa portada">
+
+            <div class="pequeno">
+                Diario personal
+            </div>
+
+            <h3>
+                Mi experiencia
+            </h3>
+
+            <div class="frase">
+                "Con cada paso se muestra mi otoño, si, mis pasos a veces secos pero caen firmes.
+Aun hay noches de amor y dias de esperanza.
+La lluvia al caer y sonido cantar me da sentir de querer el tiempo detener.
+Me moriría si me perdiese por eso ya no soy de Teseo, ahora soy de alguien más.."
+            </div>
+
+            <div class="fecha">
+                2026
+            </div>
+
+        </section>
+
+
+        <!-- PÁGINA 1 -->
+
+        <section class="pagina futura">
+
+            <div class="capitulo">
+                Capítulo I
+            </div>
+
+            <h3>
+                El comienzo
+            </h3>
+
+            <div class="linea"></div>
+
+            <p>
+                Mi etapa en la preparatoria ha sido una experiencia
+                diferente a lo que imaginaba. No solamente ha consistido
+                en entrar a clases, escribir en un cuaderno y entregar
+                trabajos.
+            </p>
+
+            <p>
+                Con el tiempo empecé a darme cuenta de que la escuela
+                también podía ser un lugar para descubrir cosas sobre mí
+                mismo. Algunas materias, conversaciones y experiencias
+                terminaron despertando intereses que antes ni siquiera
+                sabía que tenía.
+            </p>
+
+            <p>
+                Creo que una de las cosas más interesantes de esta etapa
+                ha sido precisamente eso: descubrir poco a poco qué cosas
+                realmente me llaman la atención.<br>
+
+            <h1>Etapa 1.1 — Llegar sin expectativas</h1><br><br>
+            <p>Entraba con un sentimiento de incomodidad de incoformidad que habia dejado mi primer año de prepa en la anterior escuela
+             los profes eran buenos al mneos unos 3 pero los demás supongo eran ellos mismos y no encajaba ni quería hacerlo,
+             solo me relacionaba con aquellos que podían entretenerme un poco y con los que podía desarrollar alguna conversación interesante,
+             pero aun así quedaba algo insatisfecho de aquel año, entonces entraba así, medio faltante de expectativas por esta nueva oportunidad en Conversa,
+             pues ya había escuchado acerca del "tipo" de gente que había aun así decidí darme oportunidad de 3 días, si algo impaciente,
+             lo se pero no me dió la mejor de las impreciones y yo no tuve la mejor de las preparaciones, pues a pesar de ser un lugar nuevo no llegué con una sonrisa
+             sino mas bien con una postura de prestar atencion a los horarios y a mis maestros, estos dejaban ese sentimiento de incompleta atención, aún así ahí establecí mis metas,
+             desarrollar mi ingles, mi habilidad en computación y programación, y tratar de que no me afectara mucho el ambiente en mi salón.
+            </p>
+            <p>Las primeras dos semanas fueron pesadas. Y quizá lo curioso es que no fue por algo particularmente grave, sino por esa sensación de ligereza e indiferencia que percibía por parte de algunos profesores y por la cantidad de cambios que tenía que procesar en un solo día.
+
+Eran días como de chocolate: uno llegaba, conocía algo nuevo, al día siguiente tenía que preguntar por aquello que había cambiado, prestar atención a una nueva regla, enterarse de una nueva noticia o simplemente tratar de entender cómo funcionaba todo. Y así, poco a poco, los días se iban acumulando.
+
+¿Alguien que me hiciera sentir más cómodo? Sinceramente, creo que no.
+
+Las pocas conversaciones que surgían normalmente terminaban girando alrededor del sexo, el alcohol, las groserías o frases que, desde mi perspectiva, no llevaban realmente a ningún lado. No era que me molestara que hablaran de esas cosas; simplemente no encontraba en ellas algo que me hiciera querer formar parte de la conversación.
+
+Había mucho de algo, pero eso no necesariamente lo hacía especial.
+
+Y creo que ahí fue cuando empecé a sentirme todavía más ajeno. No solamente a las conversaciones, sino también a ciertas dinámicas del salón y, especialmente, al trabajo en equipo.
+
+Estaba dispuesto a participar, sí, pero no era precisamente la persona que daba el segundo paso. Escuchaba más de lo que hablaba. Observaba más de lo que intervenía. Podía estar ahí, trabajar y cumplir, pero todavía no sentía que realmente perteneciera a ese grupo.
+
+En ese momento creo que todavía estaba intentando entender si aquel lugar iba a convertirse en una nueva oportunidad o simplemente en otra escuela en la que tendría que aprender a pasar los días.</p>
+
+            <div class="firma">
+                — Una etapa que todavía estoy viviendo
+            </div>
+
+            <div class="numero">
+                1
+            </div>
+
+        </section>
+
+
+        <!-- PÁGINA 2 -->
+
+        <section class="pagina futura">
+
+            <div class="capitulo">
+                Capítulo II
+            </div>
+
+            <h3>
+                Cuando descubrí nuevos intereses
+            </h3>
+
+            <div class="linea"></div>
+
+            <p>
+                Una de las experiencias que más me hizo pensar fue
+                descubrir que una materia como Física podía llegar a
+                interesarme.
+            </p>
+
+            <p>
+                Lo que más me llamó la atención no fue solamente el tema
+                de la materia, sino la forma en que fue presentada.
+                Aunque el profesor no era específicamente un profesor
+                de Física, consiguió explicar las cosas de una manera
+                que hizo que los temas se sintieran diferentes.
+            </p>
+
+            <p>
+                Fue interesante darme cuenta de que podía encontrar
+                gustos e intereses en lugares donde nunca pensé que los
+                encontraría.
+            </p>
+
+            <p>
+                Esa experiencia me enseñó que muchas veces no sabemos
+                qué nos gusta hasta que alguien o algo nos da la
+                oportunidad de verlo desde otra perspectiva.
+            </p><br>
+            <h1>Etapa1.2</h1>
+            <p>Pocas veces me mostraba dispuesto a dar una cara más alegre, una que correspondiera un poco más con el ambiente que tenía alrededor. No porque estuviera decidido a apartarme de todos, sino porque todavía no encontraba demasiadas razones para hacerlo de otra manera.
+
+Hubo momentos en los que eso cambiaba un poco. Las salidas escolares, por ejemplo, tenían algo diferente. También recuerdo algunas prácticas de fútbol con compañeros, momentos en los que simplemente convivíamos fuera de las paredes del salón y de las dinámicas de siempre.
+
+Ahí podía relajarme un poco más.
+
+Pero tampoco podría decir que en esos momentos era la persona más feliz del grupo. Simplemente estaba ahí. Convivía, hablaba, hacía lo que tenía que hacer y, por algunos momentos, dejaba de sentir esa distancia que normalmente mantenía conmigo mismo y con los demás.
+
+Tampoco era el más apartado.
+
+Supongo que estaba en un punto intermedio: lo suficientemente cerca para convivir con mis compañeros, pero todavía lo suficientemente lejos como para sentir que realmente no pertenecía.
+
+Y quizá eso fue lo más característico de aquella etapa. No estaba solo, pero tampoco sentía que hubiera encontrado mi lugar.
+</p><br>
+<p>Creo que las cosas empezaron a cambiar cuando hubo un cambio de profesor. El profesor David tuvo mucho que ver con eso. No podría decir que de un día para otro todo se volvió diferente, pero sí fue una de esas pequeñas cosas que comenzaron a modificar mi experiencia dentro de la escuela.
+
+También ayudó que, después de unos meses, empecé a mostrar un poco más del nivel que tenía en inglés. Al principio estaba trabajando con el libro 4, pero conforme fui demostrando lo que podía hacer, terminé pasando al 8, después al 11 y finalmente al 12.
+
+Puede parecer un detalle pequeño, pero para mí significó algo.
+
+Una de las metas con las que había llegado a Conversa era precisamente desarrollar mi inglés. Así que, mientras por un lado todavía estaba tratando de encontrar mi lugar entre mis compañeros, por otro comenzaba a notar que sí estaba avanzando en algo que me había propuesto desde el principio.
+
+Y quizá eso fue de las primeras veces en las que empecé a sentir que aquella nueva oportunidad no estaba siendo completamente en vano.
+
+No todo había cambiado. Yo seguía siendo yo, seguía observando mucho y hablando poco en ciertas situaciones, pero ya había algo diferente: empezaba a encontrar espacios en los que podía demostrar lo que sabía y, sobre todo, comprobar que había metas que sí podía cumplir.
+</p><br>
+<p>No fue sino hasta el tercer cuatrimestre cuando empecé a sentir que algunas personas realmente podían importarme. Para entonces ya comenzaba a desarrollarme un poco más con otros compañeros del mismo salón y, aunque todavía conservaba muchas de las cosas con las que había llegado, algo en mí empezaba a cambiar.
+
+Hubo un proyecto en equipo con Santiago en el que teníamos que presentar una empresa. El proyecto funcionó bastante bien, pero no porque de repente hubiera abrazos, risas interminables o salidas después de clases. Funcionó por algo mucho más sencillo: había una semilla de interés genuino.
+
+Era la disposición de darme la oportunidad de conocer a las personas más allá de aquello que escuchaba salir de sus bocas.
+
+Porque quizá ese había sido uno de mis errores al principio. Escuchaba las conversaciones, veía las actitudes y, de alguna manera, comenzaba a construir una idea de las personas a partir de eso. Pero una persona puede decir muchas cosas y aun así ser mucho más que aquello que dice.
+
+Entonces me empezó a rondar una pregunta:
+
+¿Acaso nuestras palabras nos forman o solamente forman el camino que recorremos?
+
+Quizá nuestras palabras sí dicen algo de nosotros, pero no necesariamente lo dicen todo. Tal vez somos también aquello que pensamos después de decirlas, aquello que cambiamos, aquello que aprendemos y las decisiones que tomamos cuando nadie está esperando que las tomemos.
+
+Porque una persona no termina de formarse en un solo momento. Se va formando constantemente, entre cambios, pensamientos vagos, errores, experiencias y nuevas formas de mirar a los demás.
+
+Y creo que eso fue lo que empezó a suceder conmigo.
+
+No fue que de repente todos me agradaran. Tampoco que me hubiera convertido en la persona más sociable del salón. Simplemente empecé a darme permiso de conocer antes de decidir quién era cada persona.
+</p><br>
+<p>Poco a poco me empecé a dar la oportunidad de salir después de la escuela, de quedarme un poco más de tiempo para platicar o simplemente para escuchar a alguien. Parece algo pequeño, pero para mí no lo era. Al principio mi forma de estar ahí era más de observar, escuchar y seguir mi camino, pero poco a poco empecé a dejar un poco de lado esa distancia que yo mismo había puesto.
+
+Después llegó un proyecto que terminó siendo más importante de lo que imaginaba: hacer una presentación literaria. Yo elegí hacer un poemario. Tenía años sin escribir, ni siquiera mis pensamientos más sinceros, y soy sincero al decir que eso me hacía falta.
+
+Escribir volvió a abrir una parte de mí que había dejado bastante tiempo guardada. Pero también me dio la oportunidad de escuchar más a los demás, de conocer lo que pensaban, lo que sentían y la forma en que cada persona veía las cosas. Y la experiencia, además de ser agradable, hizo que algo empezara a cambiar en mi mente.
+
+Las personas que antes veía solamente como compañeros comenzaron a tener otra forma, otra historia. Incluso podría decir que en mi mente ya iban cambiando hasta de nombre, porque dejaron de ser simplemente “alguien de mi salón” para convertirse poco a poco en personas que empezaba a reconocer de verdad.
+
+Tal vez conocer a alguien no comienza cuando sabes su nombre, sino cuando empiezas a interesarte por lo que hay detrás de él.
+</p>
+<P>El poemario también me ayudó a retomar esa esencia romántica, reflexiva y analítica que de pequeño sentía que me representaba. Cuando escribía canciones podía encontrar una forma de decir lo que pensaba sin tener que explicarlo demasiado, y con este proyecto sentía que esa parte de mí volvía a nacer.
+
+Y me encantaba.
+
+Ya me daba oportunidad de recordar de volver a experimentar  con el tiempo sin tanto miedo dejar salir mis ideas. Antes parecía que tenía que pensarlas demasiado,  Ahora prefería escribirlas, aunque fueran confusas, aunque no fueran perfectas, aunque algunas solamente tuvieran sentido para mí.
+
+Era como volver a formar mi propia voz literaria desde cero, pero con todo lo que había vivido en esos años encima.
+
+Y quizá eso era lo que necesitaba: no volver a ser el mismo que escribía de pequeño, sino recuperar esa parte de mí y dejar que se formara otra vez con la persona que ahora estaba siendo.
+</P><br>
+<p>No solo empecé a escuchar más a los demás, también empecé a mostrarme yo. A mi manera, claro. Dejé un poco atrás ese pensamiento de “no tiene sentido mostrarme” y comenzó a aparecer otro mucho más sencillo: “me mostraré y que pase lo que tenga que pasar”.
+
+Y creo que, de alguna forma, así fue también con la mayoría.
+
+Me encantó conocerlos desde su propia voz, no desde lo que yo había escuchado de ellos, ni desde la primera impresión que me había formado. Escucharlos hablar de lo que pensaban, de lo que sentían, de sus ideas y de sus propias formas de ver las cosas era algo que, sin darme cuenta, necesitaba oír.
+
+Tal vez durante mucho tiempo había pensado que conocer a alguien era convivir con esa persona, pero empecé a entender que también era escucharla realmente. Darle espacio para que se mostrara, así como yo estaba empezando a darme ese espacio.
+
+Y quizá ahí fue cuando dejó de existir tanto esa necesidad de decidir quién era cada persona antes de conocerla. Simplemente podía escucharlos, mostrarme un poco y dejar que el tiempo hiciera lo suyo.
+
+Que pasara lo que tuviera que pasar.
+</p><br>
+<p>Después de eso empecé a desarrollarme mejor con los demás, pero también creo que fue importante retomar un poco la participación del profe David en todo esto.
+
+Con los profesores que había tenido antes en el bachillerato me pasaba algo extraño: por más que estuviera en sus clases, muchas veces no lograba llevarme algo de lo que enseñaban a la cabeza. No era solamente que no me gustaran sus clases; incluso llegué a sentir cierto rechazo hacia ellos y hacia lo que representaban para mí en ese momento.
+
+Con el profe David fue diferente.
+
+Ya no era solamente yo el que expresaba que no quería estar ahí. También había compañeros que lo decían, incluso él mismo podía reconocerlo. Pero eso no hacía que nos desquitáramos unos con otros. Al contrario, él seguía esforzándose por dar sus clases, por explicar y por hacer su trabajo de la mejor manera que podía.
+
+Y eso me inspiraba.
+
+No porque de repente hubiera dejado de cuestionarme si quería estar ahí, porque la verdad es que mis propias ideas de volver a lo mismo seguían presentes. Eso no desapareció de la noche a la mañana. Pero ahora había alguien que, aun sabiendo que muchos no queríamos estar ahí, seguía intentando enseñarnos.
+
+Creo que ahí entendí algo: no siempre necesitas estar completamente convencido del lugar en el que estás para encontrar algo que valga la pena dentro de él.
+
+Y el profe David fue una de esas cosas.
+</p>
+<p>Después de eso, cada tema empezó a hacerse interesante. Cada tema podía convertirse en una conversación entre el profe y nosotros. Ya no era solamente el pizarrón y nuestros cuadernos mientras nuestras dudas quedaban opacadas por un “chicos, hoy me veo linda” o un “chicos, pues vamos a ver qué hacemos hoy, ¿ustedes tienen algo en mente?”.
+
+Con David era diferente. El tema no terminaba cuando él dejaba de escribir en el pizarrón, porque muchas veces ahí era cuando comenzaba realmente la conversación. Podíamos preguntar, opinar, cuestionar y hasta desviarnos un poco del tema sin que eso significara que la clase había perdido su propósito.
+
+Creo que eso fue parte de lo que hizo que empezara a recordar las cosas que se enseñaban. Ya no era solamente recibir información para después olvidarla; había una conversación detrás, algo que podía relacionar con mis propias ideas o con las de los demás.
+
+Y quizá por eso sus clases comenzaron a significar algo para mí. No porque todo fuera perfecto, sino porque por primera vez en un tiempo sentía que mi curiosidad tenía un lugar dentro del salón.
+
+El pizarrón seguía ahí, los cuadernos también, pero ahora entre ellos existía algo más: nuestras voces.
+</p><br>
+<p>Entre todo eso, hubo algo que me sorprendió bastante: me empezó a gustar la física.
+
+Y lo curioso es que no fue porque yo hubiera llegado con algún interés especial por ella, ni porque tuviera enfrente al profesor específico de esa materia. Fue la manera en que el profe David lograba presentar los temas. Conseguía que algo que quizá en otro momento habría visto como una materia más, empezara a despertar mi curiosidad.
+
+Cada tema podía llevarme a pensar en algo diferente, a hacer preguntas o simplemente a querer entender un poco más.
+
+Y eso me gustó bastante.
+
+Porque descubrí que todavía había intereses y gustos dentro de mí que ni siquiera conocía. No sabía que podía encontrarle cierto gusto a la física, y mucho menos que una forma distinta de enseñarla pudiera hacerme verla de otra manera.
+
+Creo que eso también fue parte de lo que me dejó David: entender que aprender algo no siempre depende de que desde el principio te guste la materia, sino de encontrar la manera de acercarte a ella.
+
+Y quizá, sin darme cuenta, eso era lo que estaba pasando conmigo en general. Estaba empezando a acercarme de otra manera a las personas, a escribir otra vez, a escuchar más y hasta a descubrir intereses que no sabía que tenía.
+</p>
+
+            <div class="numero">
+                2
+            </div>
+
+        </section>
+
+
+        <!-- PÁGINA 3 -->
+
+        <section class="pagina futura">
+
+            <div class="capitulo">
+                Capítulo III
+            </div>
+
+            <h3>
+                Aprender programación
+            </h3>
+
+            <div class="linea"></div>
+
+            <p>
+                La programación comenzó como algo que estaba aprendiendo
+                prácticamente desde cero.
+            </p>
+
+            <p>
+                Muchas veces no sabía qué significaba algo, dónde colocar
+                una parte del código o por qué una página no funcionaba
+                como esperaba. Tuve que aprender poco a poco, equivocarme,
+                corregir y volver a intentarlo.
+            </p>
+
+            <p>
+                Con el tiempo empecé a crear mis propias páginas y
+                proyectos. Lo que antes parecía solamente código comenzó
+                a convertirse en algo que podía ver y modificar.
+            </p>
+
+            <p>
+                Eso cambió mi forma de ver la programación. Entendí que
+                no se trata solamente de aprender comandos, sino de tener
+                una idea y encontrar la manera de convertirla en algo
+                real.
+            </p>
+            <br><h1>Etapa 2 — Después de pensar fuera de la caja toca salir de ella.</h1>
+
+            <div class="numero">
+                3
+            </div>
+
+        </section>
+
+
+        <!-- PÁGINA 4 -->
+
+        <section class="pagina futura">
+
+            <div class="capitulo">
+                Capítulo IV
+            </div>
+
+            <h3>
+                Crear algo propio
+            </h3>
+
+            <div class="linea"></div>
+
+            <p>
+                Una de las experiencias que más me ha ayudado a aprender
+                ha sido crear mis propios proyectos.
+            </p>
+
+            <p>
+                Un ejemplo fue trabajar en "Corre la Voz", un proyecto
+                escolar donde pude combinar programación, diseño,
+                información y creatividad.
+            </p>
+
+            <p>
+                Crear diferentes páginas, pensar en los colores, organizar
+                la información y hacer que todo funcionara me hizo
+                entender que un proyecto puede tener muchas partes
+                diferentes.
+            </p>
+
+            <p>
+                También descubrí que me gusta experimentar. A veces una
+                idea comienza siendo pequeña y termina convirtiéndose
+                en algo mucho más grande de lo que imaginaba.
+            </p>
+
+            <div class="numero">
+                4
+            </div>
+
+        </section>
+
+
+        <!-- PÁGINA 5 -->
+
+        <section class="pagina futura">
+
+            <div class="capitulo">
+                Capítulo V
+            </div>
+
+            <h3>
+                Encontrar otra forma de expresarme
+            </h3>
+
+            <div class="linea"></div>
+
+            <p>
+                La literatura se convirtió en otro de los caminos que
+                comencé a explorar.
+            </p>
+
+            <p>
+                Siempre me ha llamado la atención lo que una canción
+                puede transmitir, pero también llegó el momento en el
+                que quise intentar crear algo propio.
+            </p>
+
+            <p>
+                Empezar a experimentar con beats y aprender a utilizar
+                herramientas de producción musical ha sido completamente
+                diferente a programar.
+            </p>
+
+            <p>
+                Y justamente por eso me ha gustado. Es otra manera de
+                experimentar, probar ideas y convertir algo que tengo
+                en la cabeza en algo que pueda escuchar.
+            </p><br><br>
+            <p>"No creo en querer a alguien por amor
+Pero amo la idea de querer a alguien
+Y prefiero más el querer quererme contigo
+Y solo si querer querernos tú lo veas como arte sería lo más cercano a un paraíso"</p><br>
+<h1>Física: Aquello que conozco solo aún no lo recuerdo.</h1>
+
+
+            <div class="numero">
+                5
+            </div>
+
+        </section>
+
+
+        <!-- PÁGINA 6 -->
+
+        <section class="pagina futura">
+
+            <div class="capitulo">
+                Capítulo VI
+            </div>
+
+            <h3>
+                El DEPORTE
+            </h3>
+
+            <div class="linea"></div>
+
+            <p>
+                El deporte también forma parte de mis experiencias.
+            </p>
+
+            <p>
+                Es una actividad que me ha enseñado que no siempre las
+                cosas salen como uno espera. Hay momentos buenos y
+                momentos complicados, pero todos terminan dejando algo.
+            </p>
+
+            <p>
+                Jugar también me ha enseñado sobre constancia,
+                esfuerzo y trabajo en equipo.
+            </p>
+
+            <p>
+                Al final, muchas de las cosas que aprendo fuera de la
+                escuela también terminan formando parte de la persona
+                que estoy construyendo.
+            </p>
+
+            <div class="numero">
+                6
+            </div>
+
+        </section>
+
+
+        <!-- PÁGINA FINAL -->
+
+        <section class="pagina futura">
+
+            <div class="capitulo">
+                Último capítulo... por ahora
+            </div>
+
+            <h3>
+                Lo que sigue
+            </h3>
+
+            <div class="linea"></div>
+
+            <p>
+                Si algo he aprendido durante esta etapa es que todavía
+                me falta mucho por descubrir.
+            </p>
+
+            <p>
+                He encontrado intereses que no sabía que tenía y he
+                comenzado proyectos que alguna vez solamente fueron
+                ideas.
+            </p>
+
+            <p>
+                Programación, música, diseño, proyectos y todas las
+                experiencias que todavía faltan forman parte de un
+                camino que continúa escribiéndose.
+            </p>
+
+            <p>
+                No sé exactamente qué voy a estar haciendo dentro de
+                algunos años, pero sí sé que quiero seguir aprendiendo,
+                creando y probando cosas nuevas.
+            </p>
+
+            <p>
+                Y supongo que esa es precisamente la parte interesante:
+                todavía no sé cómo termina esta historia.
+            </p>
+
+            <div class="firma">
+                Que pase lo que tenga que pasar.
+            </div>
+
+            <div class="numero">
+                7
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         CONTROLES
+    ========================= -->
+
+    <div class="controles">
+
+        <button class="boton" id="anterior">
+            ← Anterior
+        </button>
+
+        <span id="contador">
+            Portada
+        </span>
+
+        <button class="boton" id="siguiente">
+            Siguiente →
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Mi Blog — Que pase lo que tenga que pasar.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        const paginas = document.querySelectorAll(".pagina");
+
+        const anterior = document.getElementById("anterior");
+
+        const siguiente = document.getElementById("siguiente");
+
+        const contador = document.getElementById("contador");
+
+        let paginaActual = 0;
+
+
+        function actualizarLibro() {
+
+            paginas.forEach((pagina, indice) => {
+
+                pagina.classList.remove("activa");
+                pagina.classList.remove("pasada");
+                pagina.classList.remove("futura");
+
+
+                if (indice === paginaActual) {
+
+                    pagina.classList.add("activa");
+
+                }
+
+                else if (indice < paginaActual) {
+
+                    pagina.classList.add("pasada");
+
+                }
+
+                else {
+
+                    pagina.classList.add("futura");
+
+                }
+
+            });
+
+
+            anterior.disabled = paginaActual === 0;
+
+            siguiente.disabled = paginaActual === paginas.length - 1;
+
+
+            if (paginaActual === 0) {
+
+                contador.textContent = "Portada";
+
+            }
+
+            else {
+
+                contador.textContent =
+                    "Página " + paginaActual + " de " + (paginas.length - 1);
+
+            }
+
+        }
+
+
+        siguiente.addEventListener("click", () => {
+
+            if (paginaActual < paginas.length - 1) {
+
+                paginaActual++;
+
+                actualizarLibro();
+
+            }
+
+        });
+
+
+        anterior.addEventListener("click", () => {
+
+            if (paginaActual > 0) {
+
+                paginaActual--;
+
+                actualizarLibro();
+
+            }
+
+        });
+
+
+        actualizarLibro();
+
+    </script>
+
+</body>
+</html>
